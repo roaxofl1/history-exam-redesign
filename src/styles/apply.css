@@ -1,0 +1,774 @@
+
+/* 원서접수 페이지 전용 스타일 */
+
+.apply-page {
+  background: #FFFFFF;
+}
+
+.apply-content {
+  width: min(calc(100% - 80px), 1200px);
+  min-height: calc(100vh - 180px);
+  margin: 0 auto;
+  padding: 28px 0 110px;
+}
+
+/* 제목 */
+
+.apply-heading {
+  margin: 30px 0 42px;
+}
+
+.apply-heading h1 {
+  margin: 0;
+  color: var(--sc-text);
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 700;
+  letter-spacing: -.05em;
+}
+
+/* 접수 단계 */
+
+.apply-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.apply-step {
+  min-width: 0;
+}
+
+.apply-step__bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--sc-line);
+}
+
+.apply-step.is-active .apply-step__bar,
+.apply-step.is-complete .apply-step__bar {
+  background: var(--sc-primary);
+}
+
+.apply-step__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 15px;
+  color: var(--sc-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.apply-step.is-active .apply-step__label,
+.apply-step.is-complete .apply-step__label {
+  color: var(--sc-primary);
+  font-weight: 700;
+}
+
+/* 본문 */
+
+.apply-section {
+  margin-top: 72px;
+}
+
+.apply-section__heading {
+  margin-bottom: 28px;
+}
+
+.apply-section__heading h2 {
+  margin: 0 0 12px;
+  color: var(--sc-text);
+  font-size: clamp(23px, 2.3vw, 30px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+}
+
+.apply-section__heading p {
+  margin: 0;
+  color: var(--sc-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 시험 선택 카드 */
+
+.apply-exam-card {
+  padding: 36px 40px;
+  border: 1px solid var(--sc-line);
+  border-radius: 10px;
+  background: #FFFFFF;
+}
+
+.apply-exam-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.apply-caption {
+  margin: 0 0 12px;
+  color: var(--sc-muted);
+  font-size: 13px;
+}
+
+.apply-exam-card__top h3 {
+  margin: 0;
+  color: var(--sc-text);
+  font-size: clamp(21px, 2vw, 27px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+}
+
+.apply-exam-card__date {
+  margin: 14px 0 0;
+  color: var(--sc-muted);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.apply-status {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 32px;
+  padding: 6px 12px;
+  border: 1px solid #CBDDE4;
+  border-radius: 7px;
+  background: #EAF2F5;
+  color: var(--sc-primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.apply-exam-card__divider {
+  height: 1px;
+  margin: 32px 0;
+  background: var(--sc-line);
+}
+
+/* 시험 종류 라디오 버튼 */
+
+.apply-type {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.apply-type legend {
+  margin-bottom: 20px;
+  padding: 0;
+  color: var(--sc-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.apply-type__option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  color: var(--sc-text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.apply-type__option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--sc-primary);
+  cursor: pointer;
+}
+
+.apply-type__option.is-disabled {
+  color: #A1A8AD;
+  cursor: not-allowed;
+}
+
+.apply-type__option.is-disabled input {
+  cursor: not-allowed;
+}
+
+/* 시험장 선택 */
+
+.apply-field + .apply-field {
+  margin-top: 32px;
+}
+
+.apply-field label,
+.apply-field__title {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--sc-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.apply-field select {
+  width: min(100%, 400px);
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--sc-line);
+  border-radius: 7px;
+  background: #FFFFFF;
+  color: var(--sc-text);
+  font-size: 14px;
+}
+
+.apply-field select:focus-visible {
+  outline: 2px solid var(--sc-primary);
+  outline-offset: 2px;
+}
+
+.apply-centers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.apply-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+  padding: 18px 20px;
+  border: 1px solid var(--sc-line);
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--sc-text);
+  font-size: 15px;
+  text-align: left;
+}
+
+.apply-center:hover,
+.apply-center.is-selected {
+  border-color: var(--sc-primary);
+}
+
+.apply-center.is-selected {
+  background: #F0F6F8;
+  color: var(--sc-primary);
+}
+
+/* 이전 / 다음 단계 버튼 */
+
+.apply-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.apply-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-width: 156px;
+  min-height: 50px;
+  padding: 12px 22px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background-color .2s ease,
+    color .2s ease;
+}
+
+.apply-button--outline {
+  border: 1px solid var(--sc-line);
+  background: #FFFFFF;
+  color: var(--sc-text);
+}
+
+.apply-button--outline:hover:not(:disabled) {
+  border-color: var(--sc-primary);
+  color: var(--sc-primary);
+}
+
+.apply-button--primary {
+  border: 1px solid var(--sc-primary);
+  background: var(--sc-primary);
+  color: #FFFFFF;
+}
+
+.apply-button--primary:hover {
+  background: #204A5D;
+}
+
+.apply-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+  .apply-content {
+    width: calc(100% - 36px);
+    padding: 28px 0 70px;
+  }
+
+  .apply-heading {
+    margin: 24px 0 30px;
+  }
+
+  .apply-steps {
+    gap: 8px;
+  }
+
+  .apply-step__label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .apply-section {
+    margin-top: 46px;
+  }
+
+  .apply-exam-card {
+    padding: 24px 20px;
+  }
+
+  .apply-exam-card__top {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .apply-centers {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-button {
+    min-width: 0;
+    flex: 1;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apply-page *,
+  .apply-page *::before,
+  .apply-page *::after {
+    transition: none !important;
+  }
+}
+
+/* STEP 03 — 응시 정보 */
+
+.apply-page .apply-form {
+  width: 100%;
+}
+
+.apply-page .apply-form .apply-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.apply-page .apply-form .apply-field + .apply-field {
+  margin-top: 28px;
+}
+
+.apply-page .apply-form .apply-field label {
+  display: block;
+  margin: 0;
+  color: #20272B;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.apply-page .apply-form .apply-field input {
+  display: block;
+  box-sizing: border-box;
+  width: min(100%, 460px);
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #DDE1E4;
+  border-radius: 7px;
+  background: #FFFFFF;
+  color: #20272B;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s ease;
+}
+
+.apply-page .apply-form .apply-field input:focus {
+  border-color: #285A70;
+}
+
+.apply-page .apply-form .apply-field input::placeholder {
+  color: #A1A8AD;
+}
+
+.apply-required {
+  color: #C84E4E;
+}
+
+/* 증명사진 등록 */
+
+.apply-page .apply-photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.apply-page .apply-photo h3 {
+  margin: 0 0 10px;
+  color: #20272B;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.apply-page .apply-photo p {
+  margin: 0 0 22px;
+  color: #717780;
+  font-size: 13px;
+}
+
+.apply-page .apply-photo__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.apply-page .apply-photo__upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid #285A70;
+  border-radius: 7px;
+  background: #FFFFFF;
+  color: #285A70;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color .2s ease,
+    color .2s ease;
+}
+
+.apply-page .apply-photo__upload:hover {
+  background: #285A70;
+  color: #FFFFFF;
+}
+
+.apply-page .apply-photo__upload:focus-visible {
+  outline: 2px solid #285A70;
+  outline-offset: 3px;
+}
+
+.apply-page .apply-photo__filename {
+  margin-top: 14px !important;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.apply-page .apply-photo__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 150px;
+  height: 190px;
+  border: 1px solid #DDE1E4;
+  border-radius: 8px;
+  background: #F7F9FA;
+  overflow: hidden;
+}
+
+.apply-page .apply-photo__preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apply-page .apply-photo__preview span {
+  color: #9AA2A8;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* 모바일 */
+
+@media (max-width: 760px) {
+  .apply-page .apply-form .apply-field input {
+    width: 100%;
+  }
+
+  .apply-page .apply-photo {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+
+/* STEP 04 — 최종 확인 */
+
+.apply-page .apply-confirm__title {
+  margin: 0 0 24px;
+  color: #20272B;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.apply-page .apply-confirm__list {
+  display: block;
+  margin: 0;
+}
+
+.apply-page .apply-confirm__list > div {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid #EDF0F2;
+}
+
+.apply-page .apply-confirm__list > div:last-child {
+  border-bottom: 0;
+}
+
+.apply-page .apply-confirm__list dt {
+  margin: 0;
+  color: #717780;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.apply-page .apply-confirm__list dd {
+  margin: 0;
+  color: #20272B;
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* 접수 완료 화면 */
+
+.apply-complete {
+  width: min(100%, 700px);
+  margin: 0 auto;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.apply-complete__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  background: #EAF2F5;
+  color: #285A70;
+}
+
+.apply-complete__icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.apply-complete h1 {
+  margin: 0 0 48px;
+  color: #20272B;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+}
+
+.apply-complete__summary {
+  padding: 28px 36px;
+  border: 1px solid #DDE1E4;
+  border-radius: 10px;
+  background: #F7F9FA;
+  text-align: left;
+}
+
+.apply-complete__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.apply-complete__actions .apply-button {
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .apply-page .apply-confirm__list > div {
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .apply-complete {
+    padding-top: 64px;
+  }
+
+  .apply-complete__summary {
+    padding: 20px;
+  }
+
+  .apply-complete__actions {
+    flex-direction: column;
+  }
+}
+.apply-page .apply-complete__actions a.apply-button--primary {
+  color: #FFFFFF;
+}
+
+
+
+
+/* STEP 03 — 데스크톱 전용 레이아웃 */
+@media (min-width: 761px) {
+  .apply-page .apply-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 500px;
+    column-gap: 32px;
+    align-items: start;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* 왼쪽: 사진 + 등록 버튼 + 유의사항 */
+  .apply-page .apply-photo {
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    column-gap: 24px;
+    row-gap: 24px;
+    align-items: start;
+    min-width: 0;
+  }
+
+  .apply-page .apply-photo__preview {
+    grid-column: 1;
+    grid-row: 1;
+    width: 150px;
+    height: 190px;
+  }
+
+  .apply-page .apply-photo__details {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .apply-page .apply-photo__notice {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 20px;
+    border-top: 1px solid #DDE1E4;
+  }
+
+  /* 오른쪽: 입력창 세로 일렬 */
+  .apply-page .apply-form__fields {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .apply-page .apply-form__fields .apply-field,
+  .apply-page .apply-form__fields .apply-field + .apply-field {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .apply-page .apply-form__fields .apply-field input {
+    width: 100%;
+    max-width: 500px;
+    height: 42px;
+  }
+}
+
+
+
+
+/* STEP 03 — 카드 하단 사진 등록 유의사항 */
+.apply-page .apply-photo__notice {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding-top: 22px;
+  border-top: 1px solid #DDE1E4;
+}
+
+.apply-page .apply-photo__notice h4 {
+  margin: 0 0 12px;
+  color: #285A70;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.apply-page .apply-photo__notice ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #717780;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.apply-page .apply-photo__notice li + li {
+  margin-top: 4px;
+}
+
+/* STEP 03 — 모바일 사진 등록 순서 수정 */
+@media (max-width: 760px) {
+  .apply-page .apply-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .apply-page .apply-photo__preview {
+    order: 1;
+  }
+
+  .apply-page .apply-photo__details {
+    order: 2;
+  }
+
+  .apply-page .apply-photo__notice {
+    order: 3;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/* 모바일 — 사진 유의사항과 입력창 사이 여백 */
+@media (max-width: 760px) {
+  .apply-page .apply-form__fields {
+    margin-top: 28px;
+  }
+}

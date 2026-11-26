@@ -1,0 +1,541 @@
+/* 한국사능력검정시험 Main 전용. 기존 Home 스타일에는 영향이 없습니다. */
+.history-main {
+  --main-ink: #262B2D;
+  --main-muted: #626763;
+  --main-accent: #285A70;
+  --main-line: rgba(38, 43, 45, .22);
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  color: var(--main-ink);
+  background: #E5E3DE;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.history-main *, .history-main *::before, .history-main *::after { box-sizing: border-box; }
+.history-main a { color: inherit; text-decoration: none; }
+.history-main button { font: inherit; }
+.history-main :is(a,button):focus-visible { outline: 3px solid var(--main-accent); outline-offset: 4px; }
+.history-main__visual {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+}
+/* Home -> Main 진입 시 부드러운 등장 */
+.history-main__visual { animation: history-visual-enter .65s ease-out both; }
+.history-main__panel { animation: history-panel-enter .55s ease-out both; }
+@keyframes history-visual-enter {
+  from { opacity: .5; }
+  to { opacity: 1; }
+}
+@keyframes history-panel-enter {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.history-main__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  user-select: none;
+}
+.history-main__watermark {
+  position: absolute;
+  top: 42px;
+  right: 48px;
+  z-index: 1;
+  text-align: right;
+  pointer-events: none;
+}
+
+.history-main__watermark-title {
+  margin: 0;
+  color: rgba(184, 144, 78, 0.7);
+  font-family: "Noto Serif KR", "Nanum Myeongjo", "Batang", serif;
+  font-size: clamp(84px, 8vw, 148px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.history-main__watermark-sub {
+  margin: 12px 0 0;
+  color: rgba(184, 144, 78, 0.7);
+  font-family: "Noto Serif KR", "Nanum Myeongjo", "Batang", serif;
+  font-size: clamp(18px, 1.4vw, 26px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.history-main__skip {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 5;
+  padding: 12px 16px;
+  background: white;
+}
+.history-main__skip:focus { top: 12px; }
+.history-main__panel {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: clamp(440px, 36vw, 640px);
+  max-width: 100%;
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-right: 1px solid rgba(255,255,255,.42);
+  display: flex;
+/* 변경 */
+height: 100dvh;
+align-items: stretch;
+overflow-y: auto;
+}
+.history-main__panel-inner {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px clamp(32px, 4vw, 76px) 22px;
+}
+.history-main__header {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.history-main__logo { display: inline-block; width:  min(100%, 195px); }
+.history-main__logo img { display:block; width: 100%; height: auto; }
+.history-main__account {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.history-main__account span { color: #a4a4a4; }
+.history-main__account a:hover { color: var(--main-accent); }
+
+/* 왼쪽 패널 내부 시험 일정 */
+.history-main__schedule {
+  margin-top: 34px;
+  padding: 20px;
+  border: 1px solid var(--main-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.history-main__schedule-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.history-main__schedule-desc {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--main-muted);
+}
+
+.history-main__schedule a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-accent);
+}
+
+.history-main__schedule a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.history-main__schedule-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.history-main__schedule-badge {
+  padding: 3px 7px;
+  border: 1px solid var(--main-line);
+  border-radius: 20px;
+  color: var(--main-accent);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.history-main__schedule-dates {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 16px;
+}
+
+.history-main__schedule-dates > div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+}
+
+.history-main__schedule-dates dt {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.history-main__schedule-dates dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--main-muted);
+  line-height: 1.45;
+}
+
+.history-main__nav {
+  margin-top: 26px;
+}
+
+.history-main__group { border-bottom: 1px solid var(--main-line); }
+.history-main__group:first-child { border-top: 1px solid var(--main-line); }
+.history-main__group-title { margin: 0; }
+.history-main__trigger {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--main-ink);
+  display: block;
+  width: 100%;
+  padding: 25px 0;
+  cursor: pointer;
+  text-align: left;
+  font-size: clamp(25px, 2.1vw, 32px);
+  font-weight: 600;
+  letter-spacing: -.05em;
+  line-height: 1.35;
+  transition: color .18s ease;
+}
+.history-main__trigger:hover,
+.history-main__trigger[aria-expanded="true"] { color: var(--main-accent); }
+/* 아코디언: 숨김(display:none) 대신 높이/투명도 전환 */
+
+
+/* 아코디언: 콘텐츠 높이만큼 천천히 펼쳐짐 */
+
+.history-main__submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+
+ transition:
+  grid-template-rows .25s ease-in-out,
+  opacity .2s ease,
+  visibility 0s linear .25s;
+}
+
+.history-main__submenu.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    grid-template-rows .48s ease-in-out,
+    opacity .3s ease,
+    visibility 0s linear 0s;
+}
+
+.history-main__submenu-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding-left: 4px;
+}
+
+.history-main__submenu-inner a:last-child {
+  margin-bottom: 22px;
+}
+
+.history-main__submenu a {
+  display: block;
+  width: fit-content;
+  padding: 8px 0;
+  font-size: 17px;
+  font-weight: 450;
+  letter-spacing: -.025em;
+  line-height: 1.45;
+}
+.history-main__submenu a:hover { color: var(--main-accent); text-decoration: none; text-underline-offset: 4px; }
+.history-main__notice {
+  margin: 22px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--main-muted);
+}
+
+
+/* 왼쪽 패널 최하단 푸터 */
+.history-main__footer {
+  margin-top: auto;
+  padding-top: 28px;
+  color: var(--main-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.history-main__footer p {
+  margin: 0;
+}
+
+.history-main__footer p + p {
+  margin-top: 4px;
+}
+
+/* 韓國史 타이틀 등장 애니메이션 */
+.history-main__watermark-title {
+  animation: watermark-reveal 0.8s ease-out both;
+}
+
+/* 서브카피는 조금 늦게 등장 */
+.history-main__watermark-sub {
+  animation: watermark-reveal 0.8s ease-out .5s both;
+}
+
+/* 시험 일정 하단 버튼 2개 */
+.history-main__schedule-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.history-main__schedule-actions .history-main__schedule-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 34px;
+  padding: 7px 12px;
+
+  border: 1px solid var(--main-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.35);
+
+  color: var(--main-ink);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+
+  text-decoration: none;
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
+
+.history-main__schedule-actions .history-main__schedule-button:hover {
+  background: var(--main-accent);
+  border-color: var(--main-accent);
+  color: #fff;
+}
+/* 메인 일정표 링크의 호버 밑줄 제거 */
+.history-main__schedule a,
+.history-main__schedule a:hover,
+.history-main__schedule a:focus-visible {
+  text-decoration: none;
+}
+@keyframes watermark-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .history-main__panel { width: min(48vw, 510px); min-width: 340px; }
+.history-main__panel-inner { padding: 24px 32px; }
+.history-main__header { margin-bottom: 0; }
+  .history-main__trigger { font-size: 26px; padding: 23px 0; }
+}
+@media (max-width: 700px) {
+  .history-main { display: flex; flex-direction: column; overflow: visible; }
+  .history-main__visual {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 34vh;
+    min-height: 210px;
+    max-height: 390px;
+    flex: 0 0 auto;
+  }
+  .history-main__visual img { object-position: center 42%; }
+ .history-main__watermark {
+    top: auto;
+    bottom: 18px;
+    right: 18px;
+    left: auto;
+    transform: none;
+    text-align: right;
+  }
+
+.history-main__watermark-title {
+  font-size: clamp(34px, 9vw, 52px);
+}
+
+.history-main__watermark-sub {
+  margin-top: 8px;
+  font-size: 13px;
+}
+.history-main__panel {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  min-height: calc(66vh - 1px);
+  background: #FAF8F4;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-right: 0;
+  overflow: visible;
+}
+
+.history-main__panel-inner {
+  padding: 24px 24px 32px;
+}
+
+.history-main__header {
+  margin-bottom: 0;
+}
+
+  .history-main__panel-inner { padding: 32px 24px 64px; }
+  .history-main__header { margin-bottom: 40px; }
+  .history-main__logo { width: 208px; }
+  .history-main__account { margin-top: 20px; font-size: 14px; }
+  .history-main__trigger { font-size: 23px; padding: 21px 0; }
+  .history-main__submenu a { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {.history-main__watermark-title,
+.history-main__watermark-sub {
+  animation: none;
+}
+  .history-main__trigger, .history-main__submenu { transition: none; }
+  .history-main__visual, .history-main__panel { animation: none; }
+}
+
+
+/* 모바일 전용 헤더: PC에서는 숨김 */
+.history-main__mobile-brand {
+  display: none;
+}
+
+.history-main__mobile-account {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* 로고 + 로그인/회원가입 한 줄 배치 */
+  .history-main__mobile-brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    height: 64px;
+    min-height: 64px;
+    padding: 0 20px;
+    background:
+      linear-gradient(
+        rgba(247, 247, 247, 0.94),
+        rgba(239, 239, 239, 0.88)
+      ),
+      uurl("../../public/images/main/palace-arch.png")
+        center top / cover no-repeat;
+  }
+
+  /* 로고 */
+  .history-main__mobile-brand > a {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 135px;
+  }
+
+  .history-main__mobile-brand img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 계정 버튼 */
+  .history-main__mobile-account {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .history-main__mobile-account a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid #C9C8C3;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #262B2D;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .history-main__mobile-account a:hover {
+    border-color: #285A70;
+    background: #FFFFFF;
+    color: #285A70;
+  }
+
+  /* 기존 PC용 헤더는 모바일에서 숨김 */
+  .history-main .history-main__panel .history-main__header {
+    display: none;
+  }
+
+  /* 헤더 아래 불필요한 여백 제거 */
+  .history-main .history-main__panel-inner {
+    padding: 20px 24px 64px;
+  }
+
+  .history-main .history-main__schedule {
+    margin-top: 0;
+  }
+}
+  .history-main__watermark {
+    color: #D6AD68;
+    opacity: 1;
+    text-shadow:
+      0 2px 5px rgba(0, 0, 0, 0.8),
+      0 0 14px rgba(0, 0, 0, 0.45);
+  }
+
+  .history-main__watermark-title {
+    font-weight: 700;
+  }
+
+  .history-main__watermark-sub {
+    color: #E2C48E;
+    opacity: 1;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+  }

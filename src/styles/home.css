@@ -1,0 +1,216 @@
+/* Home 인트로 전용 스타일: 기존 전역 스타일/라우터를 변경하지 않습니다. */
+.home-intro {
+  --home-bg: #FAF8F4;
+  --home-ink: #262B2D;
+  --home-muted: #626763;
+  --home-accent: #285A70;
+  --home-border: #C9C8C3;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--home-bg);
+  color: var(--home-ink);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.home-intro *, .home-intro *::before, .home-intro *::after { box-sizing: border-box; }
+.home-intro a { color: inherit; text-decoration: none; }
+.home-intro a:focus-visible { outline: 3px solid var(--home-accent); outline-offset: 4px; }
+.home-inner { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+.home-skip { position: absolute; z-index: 20; top: -100px; left: 20px; background: #fff; padding: 10px 16px; }
+.home-skip:focus { top: 10px; }
+
+/* 유물 원본 이미지는 수정하지 않고 배경으로만 사용합니다. */
+.home-heritage {
+  position: absolute; inset: 0; z-index: -1;
+  overflow: hidden; pointer-events: none;
+}
+.home-heritage__track {
+  position: absolute; left: 0; top: 50%;
+  display: flex; align-items: center; width: max-content;
+  transform: translateY(-50%);
+  animation: home-heritage-slide 110s linear infinite;
+  opacity: .105;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+.home-heritage__track img {
+  width: max(1920px, 100vw); height: auto; flex: 0 0 auto;
+  display: block; object-fit: contain; user-select: none;
+}
+@keyframes home-heritage-slide {
+  from { transform: translate3d(0, -50%, 0); }
+  to { transform: translate3d(-50%, -50%, 0); }
+}
+
+/* Header: GNB 없음 / 구분선 없음 */
+.home-header { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding-top: 27px; }
+.home-header__brand img { display: block; width: 174px; max-width: 100%; height: auto; }
+.home-header__account { display: flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 500; }
+.home-header__account span { opacity: .35; }
+.home-header__account a:hover { color: var(--home-accent); }
+
+/* Intro main: 콘텐츠는 1200px 안에만 배치 */
+.home-main {
+  position: relative; z-index: 1; flex: 1;
+  display: grid; grid-template-columns: minmax(0, 690px) minmax(0, 498px);
+  /* 카드와 메뉴 박스를 같은 그리드 행에 놓아 위아래 높이를 정확히 맞춥니다. */
+  grid-template-rows: auto auto;
+  justify-content: center; align-content: center; align-items: stretch;
+  column-gap: 12px; row-gap: 28px;
+  padding-top: 56px; padding-bottom: 74px;
+}
+
+.home-schedule {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 100%;
+  padding: 30px 32px 27px;
+  border: 1px solid var(--home-border);
+  border-radius: 8px;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.home-schedule__heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 23px; }
+.home-schedule__heading h2 { font-size: 30px; line-height: 1.3; letter-spacing: -.045em; font-weight: 700; margin: 0; }
+.home-schedule__badge { padding: 4px 9px; border: 1px solid #BBC6C6; color: var(--home-accent); border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.home-schedule__rows { display: grid; gap: 19px; }
+.home-schedule__row { display: grid; grid-template-columns: 130px minmax(0, 1fr); align-items: baseline; column-gap: 12px; }
+.home-schedule__label { display: flex; gap: 9px; align-items: center; font-size: 20px; font-weight: 600; white-space: nowrap;  }
+.home-schedule__label svg { width: 17px; height: 17px; color: var(--home-muted); flex: none; }
+.home-schedule__value { font-size: 20px; font-weight: 500; line-height: 1.55; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.home-schedule__divider { border: 0; height: 1px; background: var(--home-border); margin: 29px 0 28px; }
+
+/* 주요 기능: 하나의 네모 박스, 각 행을 구분하는 1px 선 */
+/* PC: 메뉴 리스트는 일정 카드와 같은 행, 전체 서비스 버튼은 아래 행 */
+.home-quick { display: contents; }
+.home-quick__list {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+ min-height: 394px;
+  overflow: hidden;
+  border: 1px solid var(--home-border);
+  border-radius: 8px;
+  background: transparent;
+}
+.home-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 25px;
+  color: var(--home-ink);
+  background: transparent;
+  transition: background-color .22s ease, color .22s ease;
+}
+.home-action + .home-action { border-top: 1px solid var(--home-border); }
+.home-action__label {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -.035em;
+  word-break: keep-all;
+}
+.home-action__external {
+  width: 28px;
+  height: 28px;
+  flex: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .home-action:hover { background: rgba(255, 255, 255, .70); color: var(--home-accent); }
+}
+/* 키보드 사용자도 마우스 호버와 동일한 선택 상태를 확인합니다. */
+.home-action:focus-visible {
+  background: rgba(255, 255, 255, .70);
+  color: var(--home-accent);
+  outline-offset: -4px;
+}
+.home-action:active { background: rgba(255, 255, 255, .86); color: var(--home-accent); }
+
+/* 전체 서비스 보기: 기존 최근 시안의 청록색 둥근 네모 버튼 */
+.home-quick__all {
+  grid-column: 2;
+  grid-row: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-self: start;
+  gap: 12px;
+  width: 100%;
+  height: 75px;
+  min-height: 60px;
+  padding: 12px 24px;
+  border-radius: 15px;
+  background: var(--home-accent);
+  color: #fff !important;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.04em;
+  text-align: center;
+  transition: background-color .2s ease;
+}
+.home-quick__all:hover { background: #204A5D; }
+.home-quick__all span:last-child { font-size: 1.15em; }
+
+@media (max-width: 1023px) {
+  .home-inner { width: calc(100% - 64px); }
+  .home-main { grid-template-columns: minmax(0, 680px); grid-template-rows: auto; justify-items: stretch; gap: 38px; padding-top: 65px; padding-bottom: 66px; }
+ .home-schedule {
+  grid-column: auto;
+  grid-row: auto;
+  display: block;
+}
+  .home-quick { display: flex; flex-direction: column; width: min(100%, 520px); justify-self: center; gap: 24px; }
+.home-quick__list {
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-rows: repeat(4, auto);
+  min-height: 0;
+}
+  .home-quick__all { grid-column: auto; grid-row: auto; }
+  .home-action { min-height: 76px; padding: 15px 25px; }
+  .home-action__label { font-size: 23px; }
+  .home-action__external { width: 27px; height: 27px; }
+  .home-schedule { padding: 28px; }
+  .home-heritage__track img { width: 1700px; }
+}
+@media (max-width: 599px) {
+  .home-inner { width: calc(100% - 40px); }
+  .home-header { padding-top: 18px; gap: 16px; }
+  .home-header__brand img { width: 132px; }
+  .home-header__account { gap: 8px; font-size: 12px; white-space: nowrap; }
+  .home-main { gap: 32px; padding-top: 56px; padding-bottom: 52px; }
+  .home-schedule { padding: 22px 17px; border-radius: 7px; }
+  .home-schedule__heading { gap: 7px; margin-bottom: 17px; }
+  .home-schedule__heading h2 { font-size: clamp(19px, 5vw, 23px); }
+  .home-schedule__rows { gap: 11px; }
+  .home-schedule__row { grid-template-columns: 94px minmax(0, 1fr); column-gap: 8px; }
+  .home-schedule__label, .home-schedule__value { font-size: 12px; }
+  .home-schedule__label { gap: 5px; }
+  .home-schedule__label svg { width: 14px; height: 14px; }
+  .home-schedule__divider { margin: 23px 0; }
+  .home-quick { width: 100%; gap: 22px; }
+  .home-action { min-height: 70px; padding: 12px 19px; }
+  .home-action__label { font-size: 19px; }
+  .home-action__external { width: 24px; height: 24px; }
+  .home-quick__all { min-height: 54px; font-size: 20px; border-radius: 12px; }
+  .home-heritage__track img { width: 1400px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-heritage__track { animation: none; will-change: auto; }
+  .home-action, .home-quick__all { transition: none; }
+}
